@@ -1,5 +1,5 @@
-const api = (process.env.NODE_ENV === 'production') ? 'https://pandas-urlshortener-server.herokuapp.com/api/item' : 'http://localhost:7000/api/item';
-const shortBaseUrl = (process.env.NODE_ENV === 'production') ? 'https://pandas-urlshortener-server.herokuapp.com' : 'http://localhost:7000'
+const api = 'https://pandas-urlshortener-server.herokuapp.com/api/item';
+const shortBaseUrl = 'https://pandas-urlshortener-server.herokuapp.com'
 
 //Post request
 export const shortURL = data => {
