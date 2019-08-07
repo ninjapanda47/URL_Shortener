@@ -69,7 +69,7 @@ class App extends Component {
           </Row>
           <Row>
             <Col className="footer">
-              <p>© 2018 sandigau.com</p>
+              <p>© 2019 sandigau.com</p>
             </Col>
           </Row>
         </Container>
