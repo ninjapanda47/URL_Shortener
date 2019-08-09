@@ -2,8 +2,8 @@ const api = 'https://pandas-urlshortener-server.herokuapp.com/api/item';
 const shortBaseUrl = 'https://pandas-urlshortener-server.herokuapp.com'
 
 //Post request
-export const shortURL = data => {
-    return fetch(api, {
+export const shortURL = async data => {
+    const response = await fetch(api, {
         method: 'POST',
         body: JSON.stringify({
             'originalUrl': data,
@@ -12,12 +12,9 @@ export const shortURL = data => {
         headers: {
             'Content-Type': 'application/json'
         }
-    }).then(res => res.json())
-        .then(response => {
-            console.log('Success:', (response.shortUrl))
-            return response.shortUrl
-        })
-        .catch(error => console.error('Error:', error));
-
-
+    }).then(response => response.json())
+    if (!response) {
+        return 'error, no response'
+    }
+    return response.shortUrl
 }

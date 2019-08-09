@@ -23,13 +23,11 @@ class App extends Component {
     this.setState({ url: event.target.value });
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     let data = this.state.url;
-    api.shortURL(data).then(res => this.setState({ newUrl: res }, this.setState({ returnedResult: true }))
-    )
-    this.setState({ url: '' });
-
+    const response = await api.shortURL(data)
+    this.setState({ newUrl: response, returnedResult: true, url: '' })
   }
 
   render() {
@@ -58,7 +56,7 @@ class App extends Component {
                   </Card.Title>
                   <Form onSubmit={this.handleSubmit}>
                     <Form.Group>
-                      <Form.Control type="text" value={this.state.url} onChange={this.handleChange} placeholder="Really long URL" />
+                      <Form.Control type="text" value={this.state.url} onChange={this.handleChange} />
                     </Form.Group>
                     <Button variant="primary" type="submit">Submit</Button>
                   </Form>
